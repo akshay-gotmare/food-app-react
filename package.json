@@ -1,0 +1,21 @@
+{
+  "name": "food-app",
+  "version": "1.0.0",
+  "description": "food app by akshay",
+  "scripts": {
+    "start": "parcel ./src/index.html",
+    "test": "test"
+  },
+  "author": "Akshay Gotmare",
+  "license": "ISC",
+  "dependencies": {
+    "react": "^19.2.4",
+    "react-dom": "^19.2.4"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4.2.2",
+    "parcel": "^2.16.4",
+    "postcss": "^8.5.8",
+    "tailwindcss": "^4.2.2"
+  }
+}
