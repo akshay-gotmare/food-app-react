@@ -4,10 +4,11 @@ const Filter = ({ restaurants, setFilteredRestaurants }) => {
   const [isRated, setIsRated] = useState(false);
 
   const handleFilter = () => {
-    setIsRated((prev) => !prev);
+    const clicked = !isRated;
+    setIsRated(clicked);
 
-    const filteredData = isRated
-      ? restaurants.filter((restaurant) => restaurant.info.avgRating >= 4)
+    const filteredData = clicked
+      ? restaurants.filter((restaurant) => restaurant.info.avgRating >= 4.5)
       : restaurants;
     setFilteredRestaurants(filteredData);
   };
@@ -18,9 +19,9 @@ const Filter = ({ restaurants, setFilteredRestaurants }) => {
         className="bg-amber-100 px-3 py-1 rounded-xl font-semibold text-lg hover:scale-93 transition-transform duration-100 active:scale-85"
         onClick={handleFilter}
       >
-        {isRated ? "Ratings 4+" : "Show All"}
+        {isRated ? "Show All" : "Ratings 4.5+"}
       </button>
-      <div className="bg-red-200">Hello</div>
+      <div className="bg-red-200">{isRated ? "true" : "False"}</div>
     </div>
   );
 };

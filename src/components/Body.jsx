@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import Card from "./Card";
 import Filter from "./Filter";
+import CardsContainer from "./CardsContainer";
 
 const Body = ({ restaurants }) => {
   const [filteredRestaurants, setFilteredRestaurants] = useState(restaurants);
@@ -15,14 +15,7 @@ const Body = ({ restaurants }) => {
         restaurants={restaurants}
         setFilteredRestaurants={setFilteredRestaurants}
       />
-      <div className="flex flex-wrap justify-center gap-8 ">
-        {filteredRestaurants?.length > 0 &&
-          filteredRestaurants.map((restaurant) => (
-            <div key={restaurant?.info?.id}>
-              <Card info={restaurant.info} />
-            </div>
-          ))}
-      </div>
+      <CardsContainer filteredRestaurants={filteredRestaurants} />
     </div>
   );
 };

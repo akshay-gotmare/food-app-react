@@ -1,8 +1,8 @@
-import { Utensils } from "lucide-react";
+import { Menu, ShoppingCart, Utensils } from "lucide-react";
+import MenuIcon from "./MenuIcon";
+import NavItems from "./NavItems";
 
-const Header = () => {
-  const navItems = ["Home", "About", "Contact"];
-
+const Header = ({ showSideMenu, setShowSideMenu }) => {
   return (
     <div className="flex justify-center text-xs md:text-sm lg:text-lg">
       <div className="flex justify-between items-center flex-wrap bg-white/60 h-25 w-[98%] px-6 rounded-full mt-3">
@@ -15,21 +15,28 @@ const Header = () => {
             <code className="text-sm">Way you eat</code>
           </div>
         </div>
-        <div className="flex justify-between items-center sm:gap-0 md:gap-2 lg:gap-6">
-          {navItems.map((item, index) => {
-            return (
-              <span
-                key={index}
-                className="bg-black px-5 py-2 rounded-full font-semibold text-white hover:scale-93 transition-transform duration-100"
-              >
-                {item}
-              </span>
-            );
-          })}
-        </div>
-        <button className="mr-3 px-8 py-2 bg-green-400 rounded hover:scale-93 transition-transform duration-100">
-          Login
-        </button>
+        <NavItems />
+        <span className="flex justify-between items-center gap-2 mr-3 px-4 py-2 rounded-full select-none cursor-pointer">
+          {/* Cart */}
+          <span className="flex items-center hover:scale-93 transition-transform duration-100">
+            <ShoppingCart
+              size={30}
+              color="#000"
+              //   strokeWidth={2.5}
+              //   color="#fff"
+              strokeWidth={2}
+              absoluteStrokeWidth
+              fill="green"
+            />
+            <span className="bg-green-500 px-1 text-xs mb-5 rounded-full text-white">
+              0
+            </span>
+          </span>
+          <MenuIcon
+            showSideMenu={showSideMenu}
+            setShowSideMenu={setShowSideMenu}
+          />
+        </span>
       </div>
     </div>
   );
