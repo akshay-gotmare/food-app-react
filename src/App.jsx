@@ -3,6 +3,7 @@ import Body from "./components/Body";
 import Footer from "./components/Footer";
 import Header from "./components/Header";
 import SideMenu from "./components/SideMenu";
+import { Outlet } from "react-router";
 
 const App = () => {
   const [restaurants, setRestaurants] = useState([]);
@@ -33,7 +34,8 @@ const App = () => {
     <div>
       <div className="flex flex-col min-h-screen bg-amber-200 gap-5 relative">
         <Header showSideMenu={showSideMenu} setShowSideMenu={setShowSideMenu} />
-        <Body restaurants={restaurants} />
+        {/* <Body restaurants={restaurants} /> */}
+        <Outlet context={restaurants} />
         <Footer />
       </div>
       {showSideMenu && (

@@ -1,6 +1,12 @@
 import { useState } from "react";
+import RatingsButton from "./RatingsButton";
+import Search from "./Search";
 
-const Filter = ({ restaurants, setFilteredRestaurants }) => {
+const Filter = ({
+  restaurants,
+  filteredRestaurants,
+  setFilteredRestaurants,
+}) => {
   const [isRated, setIsRated] = useState(false);
 
   const handleFilter = () => {
@@ -8,20 +14,23 @@ const Filter = ({ restaurants, setFilteredRestaurants }) => {
     setIsRated(clicked);
 
     const filteredData = clicked
-      ? restaurants.filter((restaurant) => restaurant.info.avgRating >= 4.5)
+      ? filteredRestaurants.length > 0
+        ? filteredRestaurants.filter(
+            (restaurant) => restaurant.info.avgRating >= 4.5,
+          )
+        : restaurants.filter((restaurant) => restaurant.info.avgRating >= 4.5)
       : restaurants;
     setFilteredRestaurants(filteredData);
   };
 
   return (
-    <div className="flex justify-around items-center mb-8 ">
-      <button
-        className="bg-amber-100 px-3 py-1 rounded-xl font-semibold text-lg hover:scale-93 transition-transform duration-100 active:scale-85"
-        onClick={handleFilter}
-      >
-        {isRated ? "Show All" : "Ratings 4.5+"}
-      </button>
-      <div className="bg-red-200">{isRated ? "true" : "False"}</div>
+    <div className="flex justify-around items-center mb-8 px-10 mx-8">
+      <RatingsButton onClick={handleFilter} isRated={isRated} />
+      <Search
+        restaurants={restaurants}
+        filteredRestaurants={filteredRestaurants}
+        setFilteredRestaurants={setFilteredRestaurants}
+      />
     </div>
   );
 };
