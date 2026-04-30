@@ -16,7 +16,6 @@ const App = () => {
     try {
       const response = await fetch(swiggyApi);
       const data = await response.json();
-      console.log(data);
       setRestaurants(
         data?.data?.cards?.[1]?.card?.card?.gridElements?.infoWithStyle
           ?.restaurants,
@@ -34,7 +33,6 @@ const App = () => {
     <div>
       <div className="flex flex-col min-h-screen bg-amber-200 gap-5 relative">
         <Header showSideMenu={showSideMenu} setShowSideMenu={setShowSideMenu} />
-        {/* <Body restaurants={restaurants} /> */}
         <Outlet context={restaurants} />
         <Footer />
       </div>

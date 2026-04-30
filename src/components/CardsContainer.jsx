@@ -1,3 +1,4 @@
+import { Link } from "react-router";
 import Card from "./Card";
 
 const CardsContainer = ({ filteredRestaurants }) => {
@@ -5,9 +6,12 @@ const CardsContainer = ({ filteredRestaurants }) => {
     <div className="flex flex-wrap justify-center gap-8 ">
       {filteredRestaurants?.length > 0 &&
         filteredRestaurants.map((restaurant) => (
-          <div key={restaurant?.info?.id}>
+          <Link
+            key={restaurant?.info?.id}
+            to={`restaurant/${restaurant?.info?.id}`}
+          >
             <Card info={restaurant.info} />
-          </div>
+          </Link>
         ))}
     </div>
   );
